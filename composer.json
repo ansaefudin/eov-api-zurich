@@ -1,0 +1,15 @@
+{
+    "name": "gaw508/eov-api-client",
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "authors": [
+        {
+            "name": "George Webb",
+            "email": "george.webb1@pb.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"EOV\\": "src/"}
+    }
+}
