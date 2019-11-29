@@ -49,7 +49,7 @@
     }
     
     if (isset($_POST["parsing-data"])) {
-        $table = $_POST['tipe-produk'];
+        $table = 'tb_data_zurcih';
         $sql = "SELECT  *  FROM $table  where STATUS_FLAG='CREATED'";
         $check = $pdo->prepare($sql);
         $check->execute();
@@ -61,7 +61,7 @@
             foreach($result as $data){  
                 if($table=="tb_ul_tl"){
                     $sql = "UPDATE $table SET 
-                        NOMINALRow1 = ?,
+                        CURRENCY = ?,
                         NOMINALRow2 = ?,
                         NOMINALRow3 = ?,
                         PRODUCT_TYPE_KS = ?,

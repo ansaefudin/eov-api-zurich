@@ -6,14 +6,13 @@ use EOV\Purl;
 use EOV\Exception\RequestFailureException;
     if(isset($_POST["create-uid"])){
         try{
-            $table  = 'tb_data_zurich';
-            $sql    = "SELECT * FROM $table where STATUS_FLAG='PARSED' ";
+            $table  = 'tb_data_zurcih';
+            $sql    = "SELECT * FROM $table where STATUS_FLAG='PARSED'";
             $query  = $pdo->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
             $countupdated=0;
-            $=0;
-            $link_zurich="https://preprod.rtcvid.net/amfs/?uid=";
+            $link_zurich="https://preprod.rtcvid.net/zurichpro8/?uid=";
             if(count($result)>0){
                 foreach($result as $val){
                     $status = false;
@@ -59,7 +58,7 @@ use EOV\Exception\RequestFailureException;
                 echo "<div class='alert alert-primary' role='alert'>";
                 echo '[UPLOAD]Total ('.$countupdated.') diperbarui';
                 echo "</div>";
-            
+            }
         } catch (Exception $e) {
             echo $e->code . "\n" . $e->message . "\n";         // Output http status code and message
             if (!empty($e->message)) {                              // Output validation messages
