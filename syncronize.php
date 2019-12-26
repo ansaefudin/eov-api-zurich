@@ -4,8 +4,8 @@ require_once 'autoloader.php';
 use EOV\ApiClient;
 use EOV\Purl;
 use EOV\Exception\RequestFailureException;
-    if(isset($_POST["create-uid"])){
-        try{
+    //if(isset($_POST["create-uid"])){
+//        try{
             $table  = 'tb_data_zurcih';
             $sql    = "SELECT * FROM $table where STATUS_FLAG='PARSED'";
             $query  = $pdo->prepare($sql);
@@ -22,23 +22,29 @@ use EOV\Exception\RequestFailureException;
                             'POLICY_HOLDER_DATE_OF_BIRTH' => $val['POLICY_HOLDER_DATE_OF_BIRTH'],
                             'POLICY_NUMBER' => $val['POLICY_NUMBER'],
                             'INSURED_NAME' => $val['INSURED_NAME'],
+                            'CURRENCY_1' => $val['CURRENCY_1'],
                             'SUM_ASSURED' => $val['SUM_ASSURED'],
+                            'CURRENCY_2' => $val['CURRENCY_2'],
                             'PREMIUM_AMOUNT' => $val['PREMIUM_AMOUNT'],
+                            'CODE_FREQUENCY' => $val['CODE_FREQUENCY'],
                             'PAYMENT_FREQUENCY' => $val['PAYMENT_FREQUENCY'],
+                            'CODE_PAYMENT_METHOD' => $val['CODE_PAYMENT_METHOD'],
                             'PAYMENT_METHOD' => $val['PAYMENT_METHOD'],
                             'AGENT_NAME' => $val['AGENT_NAME'],
                             'POLICY_HOLDER_PHONE_NUMBER' => $val['POLICY_HOLDER_PHONE_NUMBER'],
                             'EMAIL_POLICY_HOLDER_NAME' => $val['EMAIL_POLICY_HOLDER_NAME'],
                             'COMPONENT_DESCRIPTION' => $val['COMPONENT_DESCRIPTION'],
-                            'CURRENCY' => $val['CURRENCY'],
-                            'verif' => '',
-                            'verif_b' => '',
-                            'check' => '',
-                            'survey' => '',
+                            'SUGGESTION' => '',
+                            'VALIDATE' => '',
+                            'CONFRIM_BUKU_POLIS' => '',
+                            'CONFIRM_DATA_POLIS' => '',
+                            'SURVEY' => '',
+                            'LOOPING' => ''
                             );
+                    var_dump($data);
                     $username = 'apizurich';
                     $password = 'Zur|ch@34L!2'; 
-                    $api_client = ApiClient::factory('https://preprod.rtcvid.net', 'zurichpro8', $username,$password);
+                    $api_client = ApiClient::factory('https://preprod.rtcvid.net/', 'new_zurichpro8', $username,$password);
                     $purl = new Purl($api_client);
                     $puid = $purl->create($data);
                     $countupdated++;
@@ -59,11 +65,11 @@ use EOV\Exception\RequestFailureException;
                 echo '[UPLOAD]Total ('.$countupdated.') diperbarui';
                 echo "</div>";
             }
-        } catch (Exception $e) {
-            echo $e->code . "\n" . $e->message . "\n";         // Output http status code and message
-            if (!empty($e->message)) {                              // Output validation messages
-                echo implode("\n", $e->message);
-            }
-        }
-    }
+    //     } catch (Exception $e) {
+    //         echo $e->code . "\n" . $e->message . "\n";         // Output http status code and message
+    //         if (!empty($e->message)) {                              // Output validation messages
+    //             echo implode("\n", $e->message);
+    //         }
+    //     }
+    //}
 ?>
